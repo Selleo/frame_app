@@ -1,6 +1,12 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.generators do |g|
+    g.test_framework :rspec
+    g.fixture_replacement :factory_bot
+    g.factory_bot dir: 'spec/factories'
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
