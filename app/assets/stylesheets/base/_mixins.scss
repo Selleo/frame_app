@@ -1,0 +1,31 @@
+@mixin am-btn {
+  border: 2px solid $gray-100;
+  color: $primary;
+  padding-bottom: $m-sm;
+  padding-top: $m-sm;
+
+  &:hover {
+    background-color: $primary-light;
+    border-color: transparent;
+    box-shadow: none;
+    color: $white;
+  }
+
+  &:link:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin am-btn-raised {
+  border-color: transparent;
+  color: $white;
+}
+
+@mixin am-btn-danger {
+  color: $danger;
+
+  &:hover {
+    background-color: $danger;
+    color: $white;
+  }
+}

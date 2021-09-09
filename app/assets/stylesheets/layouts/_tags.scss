@@ -1,0 +1,4 @@
+.status_tag {
+  &.valid { background: $green-color; }
+  &.invalid { background: $red-color; }
+}

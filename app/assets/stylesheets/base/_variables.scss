@@ -1,0 +1,28 @@
+$breakpoints:        (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, 2xl: 1600px);
+
+$m:                  16px;
+$m-xs:               4px;
+$m-sm:               8px;
+$m-md:               24px;
+$m-lg:               32px;
+$m-xl:               40px;
+
+$primary:            #009688;
+$primary-light:      #00c9b6;
+$danger:             #C91914;
+
+$white:              #ffffff;
+$gray-100:           #eeeeee;
+$gray-150:           #e0e0e0;
+$gray-200:           #757575;
+$orange-color:       #FF9900;
+$green-color:        #08A510;
+$red-color:          $danger;
+$blue-color:         #00aeff;
+$gray-color:         #a7a7a7;
+
+$radius:             2px;
+
+
+//-----OVERRIDE ACTIVE_MATERIAL-----------------------------------------------------------------------------------------
+$am-theme-error:     $danger;

@@ -1,0 +1,49 @@
+.active_admin_comment {
+  padding-bottom: $m-sm;
+  border-top: none !important;
+}
+
+.active_admin_comment_meta {
+  display: flex;
+  margin-bottom: $m-sm;
+
+  span {
+    margin-left: $m;
+  }
+
+  a[data-method="delete"] {
+    margin-left: auto;
+  }
+}
+
+.active_admin_comment_body {
+  background-color: $gray-100;
+  border-radius: $radius;
+  padding: $m-sm;
+  margin-top: $m-sm;
+
+  p {
+    margin: 0;
+
+    & + p {
+      margin-top: $m-sm;
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .active_admin_comment_meta {
+    flex-direction: column;
+
+    span {
+      margin-bottom: $m-xs;
+      margin-left: 0;
+      margin-top: $m-sm;
+    }
+
+    a[data-method="delete"] {
+      margin-left: 0;
+    }
+  }
+}
+

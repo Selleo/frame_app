@@ -1,0 +1,30 @@
+.scope.selected a {
+  padding: 5px 10px;
+  color: white;
+}
+
+fieldset.actions .cancel a {
+  @include am-btn;
+}
+
+#titlebar_right .action_item a {
+  @include am-btn;
+
+  &[data-method="delete"] {
+    @include am-btn-danger;
+  }
+}
+
+.button.has_many_remove {
+  @include am-btn-danger;
+}
+
+.dropdown_menu_button.disabled:hover,
+.dropdown_menu_button.disabled:focus {
+  color: $primary;
+  text-decoration: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
