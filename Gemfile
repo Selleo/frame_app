@@ -32,6 +32,8 @@ gem 'activeadmin_addons', github: 'platanus/activeadmin_addons'
 gem 'active_material', github: 'vigetlabs/active_material'
 gem 'devise'
 
+gem 'draper'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
