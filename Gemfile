@@ -28,6 +28,8 @@ gem 'turbolinks', '~> 5'
 
 # Active Admin
 gem 'activeadmin'
+gem 'activeadmin_addons', github: 'platanus/activeadmin_addons'
+gem 'active_material', github: 'vigetlabs/active_material'
 gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
