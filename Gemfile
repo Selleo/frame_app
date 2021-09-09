@@ -33,6 +33,7 @@ gem 'active_material', github: 'vigetlabs/active_material'
 gem 'devise'
 
 gem 'draper'
+gem 'rails-patterns'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
