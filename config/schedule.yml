@@ -1,0 +1,5 @@
+#do_something:
+#  cron: "*/5 * * * *"
+#  class: "ServiceWorker"
+#  args:
+#    - "do_something"

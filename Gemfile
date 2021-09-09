@@ -34,6 +34,9 @@ gem 'devise'
 
 gem 'draper'
 gem 'rails-patterns'
+gem 'sidekiq', '~> 5.2.1'
+gem 'sidekiq-cron', '~> 1.0.4'
+gem 'sidekiq-status'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
