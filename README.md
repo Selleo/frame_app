@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setting up application locally
 
-Things you may want to cover:
+- Ensure you have docker installed
+- Ensure you are using the correct ruby version (look into `.ruby-version` for reference) 
 
-* Ruby version
+In project directory
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- `docker-compose up` - runs PostgreSQL and Redis
+- `cp config/database.yml.example config/database.yml` - instantiates local database configuration
+- `bundle install` - installs all necessary gems (libraries)
+- `rails db:create db:schema:load` - creates DB and loads the most recent DB structure
+- `rails db:seed` - to seed database with initial data (admin account basically)
+- `yarn install` - install YARN packages
+- `rails s` - runs application server
