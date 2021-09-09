@@ -37,6 +37,7 @@ gem 'rails-patterns'
 gem 'sidekiq', '~> 5.2.1'
 gem 'sidekiq-cron', '~> 1.0.4'
 gem 'sidekiq-status'
+gem 'pubsub_on_rails', '0.0.7', github: 'stevo/pubsub_on_rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -67,6 +68,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
+  gem 'webmock'
   gem 'stub_env'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'

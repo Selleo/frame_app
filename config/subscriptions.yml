@@ -1,0 +1,4 @@
+# Uncomment lines in initializers/pub_sub.rb when introducing first subscription
+
+#domain_name:
+#  domain_name__event_name: async
