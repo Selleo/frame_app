@@ -187,6 +187,7 @@ GEM
       railties (>= 5.0.0)
     factory_trace (0.4.1)
       factory_bot (>= 4.0)
+    ffaker (2.19.0)
     ffi (1.15.4)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -436,6 +437,7 @@ DEPENDENCIES
   draper
   factory_bot_rails
   factory_trace
+  ffaker
   listen (~> 3.3)
   pg
   pubsub_on_rails (= 0.0.7)!

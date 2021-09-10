@@ -50,6 +50,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'factory_trace'
   gem 'dotenv-rails'
+  gem 'ffaker'
   gem 'rexml'
 end
 
