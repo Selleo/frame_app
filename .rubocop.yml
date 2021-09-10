@@ -1,0 +1,433 @@
+# To make it easier to find descriptions and add exceptions
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'config/*'
+    - 'config/initializers/*'
+    - 'config/environments/*'
+    - 'config.ru'
+    - 'Rakefile'
+
+# https://docs.rubocop.org/rubocop/cops_bundler.html#bundlerorderedgems
+# To keep correlated gems together
+Bundler/OrderedGems:
+  TreatCommentsAsGroupSeparators: true
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Layout/IndentHash
+# To make reasonable use of whitespace
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: 'consistent'
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Layout/IndentArray
+# To make reasonable use of whitespace
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: 'consistent'
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Layout/DotPosition
+# So when reading code we know that given line has continuation
+Layout/DotPosition:
+  EnforcedStyle: 'trailing'
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Layout/LineLength
+# To fit Github review window
+# Migration names and subscription assertions tend to be long
+# Configuration files tend to contain long comments
+Layout/LineLength:
+  Max: 100
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'spec/subscriptions/*'
+
+# It looks perfectly fine for asserting change
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Lint/AmbiguousBlockAssociation
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - '**/*_spec.rb'
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Metrics/AbcSize
+# Lets be reasonable about it
+# It is common to exceed AbcSize in migrations
+Metrics/AbcSize:
+  Max: 17.5
+  Exclude:
+    - 'db/migrate/**/*'
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Metrics/BlockLength
+# It is common to have long blocks in routes, specs, matchers,
+# factories and configuration files
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'spec/spec_helper.rb'
+    - 'spec/**/*_factory.rb'
+    - 'spec/support/matchers/*.rb'
+    - '**/*_spec.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - '**/*_spec.rb'
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Metrics/MethodLength
+# 12 does not seem too restrictive
+# Long methods are common to migrations and seeds
+Metrics/MethodLength:
+  Max: 12
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'db/seeds/**/*'
+
+# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Metrics/ModuleLength
+# Large modules are totally fine in rspec
+Metrics/ModuleLength:
+  Exclude:
+    - '**/*_spec.rb'
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/AccessorMethodName
+# It is common to expose `get_` like interface in wrappers
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/wrappers/**/*.rb'
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/VariableNumber
+# More readable
+Naming/VariableNumber:
+  EnforcedStyle: 'snake_case'
+  CheckSymbols: false
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/UncommunicativeMethodParamName
+# i.e. "at" is still communicative :)
+Naming/MethodParameterName:
+  MinNameLength: 2
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/Alias
+# To keep it consistent. `alias` does not work for all cases (i.e. aliasing at runtime)
+Style/Alias:
+  EnforcedStyle: 'prefer_alias_method'
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/BlockDelimiters
+# It is common to use {} blocks for `expect`
+Style/BlockDelimiters:
+  Exclude:
+    - '**/*_spec.rb'
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/DateTime
+# We do not care about it that much, and sometimes we need it
+Style/DateTime:
+  Enabled: false
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/Documentation
+# We prefer everything to be self-explanatory
+Style/Documentation:
+  Enabled: false
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/FormatString
+# The shortest syntax
+Style/FormatString:
+  EnforcedStyle: 'percent'
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/FormatStringToken
+# It is reasonable not to annotate every single token
+Style/FormatStringToken:
+  Enabled: false
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/FrozenStringLiteralComment
+# We do not care
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/GuardClause
+# Sometimes using explicit condition is more readable
+Style/GuardClause:
+  Enabled: false
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/MutableConstant
+# Seriously this has never been a problem and it looks weird
+Style/MutableConstant:
+  Enabled: false
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/NumericLiterals
+# It looks awkward for custom ids
+Style/NumericLiterals:
+  Exclude:
+    - '**/*_spec.rb'
+    - '**/*_factory.rb'
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/SymbolArray
+# Common way to describe indices
+Style/SymbolArray:
+  Exclude:
+    - 'db/migrate/**/*'
+
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/Lambda
+# Scopes look better with `->` notation
+Style/Lambda:
+  Exclude:
+    - 'app/models/**/*'
+
+# ------------------------------------
+# Explicit disabling/enabling required
+# ------------------------------------
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/StructInheritance:
+  Enabled: false
+
+Layout/BeginEndAlignment: # (new in 0.91)
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor: # (new in 0.83)
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator: # (new in 0.82)
+  Enabled: true
+
+Lint/BinaryOperatorWithIdenticalOperands: # (new in 0.89)
+  Enabled: true
+
+Lint/ConstantDefinitionInBlock: # (new in 0.91)
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant: # (new in 0.84)
+  Enabled: true
+
+Lint/DuplicateElsifCondition: # (new in 0.88)
+  Enabled: true
+
+Lint/DuplicateRequire: # (new in 0.90)
+  Enabled: true
+
+Lint/DuplicateRescueException: # (new in 0.89)
+  Enabled: true
+
+Lint/EmptyConditionalBody: # (new in 0.89)
+  Enabled: true
+
+Lint/EmptyFile: # (new in 0.90)
+  Enabled: false
+
+Lint/FloatComparison: # (new in 0.89)
+  Enabled: true
+
+Lint/HashCompareByIdentity: # (new in 0.93)
+  Enabled: true
+Lint/IdentityComparison: # (new in 0.91)
+  Enabled: true
+
+Lint/MissingSuper: # (new in 0.89)
+  Enabled: false
+
+Lint/MixedRegexpCaptureTypes: # (new in 0.85)
+  Enabled: true
+
+Lint/OutOfRangeRegexpRef: # (new in 0.89)
+  Enabled: true
+
+Lint/RaiseException: # (new in 0.81)
+  Enabled: true
+
+Lint/RedundantSafeNavigation: # (new in 0.93)
+  Enabled: true
+
+Lint/SelfAssignment: # (new in 0.89)
+  Enabled: true
+
+Lint/StructNewOverride: # (new in 0.81)
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument: # (new in 0.89)
+  Enabled: true
+
+Lint/TrailingCommaInAttributeDeclaration: # (new in 0.90)
+  Enabled: true
+
+Lint/UnreachableLoop: # (new in 0.89)
+  Enabled: true
+
+Lint/UselessMethodDefinition: # (new in 0.90)
+  Enabled: true
+
+Lint/UselessTimes: # (new in 0.91)
+  Enabled: true
+
+Style/AccessorGrouping: # (new in 0.87)
+  Enabled: true
+
+Style/BisectedAttrAccessor: # (new in 0.87)
+  Enabled: true
+
+Style/CaseLikeIf: # (new in 0.88)
+  Enabled: true
+
+Style/ClassEqualityComparison: # (new in 0.93)
+  Enabled: true
+
+Style/CombinableLoops: # (new in 0.90)
+  Enabled: true
+
+Style/ExplicitBlockArgument: # (new in 0.89)
+  Enabled: true
+
+Style/ExponentialNotation: # (new in 0.82)
+  Enabled: true
+
+Style/GlobalStdStream: # (new in 0.89)
+  Enabled: true
+
+Style/HashAsLastArrayItem: # (new in 0.88)
+  Enabled: true
+
+Style/HashLikeCase: # (new in 0.88)
+  Enabled: true
+
+Style/KeywordParametersOrder: # (new in 0.90)
+  Enabled: true
+
+Style/OptionalBooleanParameter: # (new in 0.89)
+  Enabled: true
+
+Style/RedundantAssignment: # (new in 0.87)
+  Enabled: true
+
+Style/RedundantFetchBlock: # (new in 0.86)
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire: # (new in 0.88)
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass: # (new in 0.85)
+  Enabled: true
+
+Style/RedundantRegexpEscape: # (new in 0.85)
+  Enabled: true
+
+Style/RedundantSelfAssignment: # (new in 0.90)
+  Enabled: true
+
+Style/SingleArgumentDig: # (new in 0.89)
+  Enabled: true
+
+Style/SlicingWithRange: # (new in 0.83)
+  Enabled: true
+
+Style/SoleNestedConditional: # (new in 0.89)
+  Enabled: true
+
+Style/StringConcatenation: # (new in 0.89)
+  Enabled: true
+
+Lint/DuplicateRegexpCharacterClassElement: # (new in 1.1)
+  Enabled: true
+
+Lint/EmptyBlock: # (new in 1.1)
+  Enabled: true
+
+Lint/ToEnumArguments: # (new in 1.1)
+  Enabled: false
+
+Lint/UnmodifiedReduceAccumulator: # (new in 1.1)
+  Enabled: true
+
+Style/ArgumentsForwarding: # (new in 1.1)
+  Enabled: true
+
+Style/DocumentDynamicEvalDefinition: # (new in 1.1)
+  Enabled: true
+
+Style/SwapValues: # (new in 1.1)
+  Enabled: true
+
+Lint/DuplicateBranch: # (new in 1.3)
+  Enabled: true
+
+Lint/EmptyClass: # (new in 1.3)
+  Enabled: true
+
+Lint/NoReturnInBeginEndBlocks: # (new in 1.2)
+  Enabled: true
+
+Style/CollectionCompact: # (new in 1.2)
+  Enabled: true
+
+Style/NegatedIfElseCondition: # (new in 1.2)
+  Enabled: true
+
+Style/NilLambda: # (new in 1.3)
+  Enabled: true
+
+Lint/UnexpectedBlockArity: # (new in 1.5)
+  Enabled: true
+
+Style/RedundantArgument: # (new in 1.4)
+  Enabled: true
+
+Layout/SpaceBeforeBrackets: # (new in 1.7)
+  Enabled: true
+
+Lint/AmbiguousAssignment: # (new in 1.7)
+  Enabled: true
+
+Style/HashExcept: # (new in 1.7)
+  Enabled: true
+
+Lint/DeprecatedConstants: # (new in 1.8)
+  Enabled: true
+
+Lint/LambdaWithoutLiteralBlock: # (new in 1.8)
+  Enabled: true
+
+Lint/RedundantDirGlobSort: # (new in 1.8)
+  Enabled: true
+
+Style/EndlessMethod: # (new in 1.8)
+  Enabled: true
+
+Gemspec/DateAssignment: # (new in 1.10)
+  Enabled: true
+
+Lint/EmptyInPattern: # (new in 1.16)
+  Enabled: true
+
+Lint/NumberedParameterAssignment: # (new in 1.9)
+  Enabled: true
+
+Lint/OrAssignmentToConstant: # (new in 1.9)
+  Enabled: true
+
+Lint/SymbolConversion: # (new in 1.9)
+  Enabled: true
+
+Lint/TripleQuotes: # (new in 1.9)
+  Enabled: true
+
+Style/HashConversion: # (new in 1.10)
+  Enabled: true
+
+Style/IfWithBooleanLiteralBranches: # (new in 1.9)
+  Enabled: true
+
+Style/InPatternThen: # (new in 1.16)
+  Enabled: true
+
+Style/MultilineInPatternThen: # (new in 1.16)
+  Enabled: true
+
+Style/QuotedSymbols: # (new in 1.16)
+  Enabled: true
+
+Style/StringChars: # (new in 1.12)
+  Enabled: true
+

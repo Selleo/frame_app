@@ -29,6 +29,8 @@ jobs:
         run: |
           gem install bundler
           bundler install
+      - name: Run rubocop
+        run: bundler exec rubocop
       - name: Create database
         run: |
           cp config/database.yml{.example,}

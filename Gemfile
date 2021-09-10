@@ -59,31 +59,33 @@ gem 'pubsub_on_rails', '0.0.7', github: 'stevo/pubsub_on_rails'
 # Model versioning
 # gem 'versionist'
 
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # RSpec + FactoryBot as testing framework of choice
-  gem 'rspec-rails'
-  gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
   gem 'factory_trace'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
   # Environment variables from dotfiles
   gem 'dotenv-rails'
   # Generating fake data (mostly for seeds)
   gem 'ffaker'
   gem 'rexml'
+  # Ensure uniform code style
+  gem 'rubocop', '~> 1.16.0', require: false
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
-  # Display performance information such as SQL time and flame graphs for each request in your browser.
-  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
+  # Display performance information such as SQL time and flame graphs for
+  # each request in your browser.
   gem 'rack-mini-profiler', '~> 2.0'
+  # Reload classes on file change
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -104,4 +106,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
